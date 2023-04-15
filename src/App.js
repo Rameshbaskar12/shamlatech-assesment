@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import AddEmployee from './Components/AddEmployee';
+import EditEmployee from './Components/EditEmployee';
+import Home from './Components/Home';
+import { Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { GlobalProvider } from './Context/GlobalState';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ maxWidth: '60rem', margin: '4rem auto'}}>
+      <GlobalProvider>
+        <Routes>
+          <Route exact path='/' element={<Home/>} />
+          <Route path='/add' element={<AddEmployee/>} />
+          <Route path='/edit/:id' element={<EditEmployee/>} />
+        </Routes>
+      </GlobalProvider>    
     </div>
   );
 }
